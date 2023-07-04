@@ -30,27 +30,22 @@ function App() {
       if (months < 0 || (months === 0 && days < 0)) {
         years--
         months += 12
-      } else if (months === 0 && days >= 0) {
-        months = 0
       }
 
       if (days < 0) {
-        const lastMonthDate = new Date(
-          currentDate.getFullYear(),
-          currentDate.getMonth(),
-          0
-        ).getDate()
+        const lastMonthDate = new Date().getDay()
 
         days += lastMonthDate
-        months--
       }
-
+      
       setResult({
         years: years,
         months: months,
         days: days,
       })
     }
+
+    console.log(result)
   }
 
   return (
@@ -133,7 +128,11 @@ function App() {
           </div>
           <div className="flex items-center gap-2">
             <span className="text-4xl font-bold text-purple-500">
-              {result.days ? result.days : "--"}
+            {result.days !== undefined
+                ? result.days
+                : result.days === 0
+                ? 0
+                : "--"}
             </span>
             <span className="text-5xl font-bold">days</span>
           </div>
