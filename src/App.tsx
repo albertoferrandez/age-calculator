@@ -44,8 +44,6 @@ function App() {
         days: days,
       })
     }
-
-    console.log(result)
   }
 
   return (
